@@ -29,6 +29,10 @@ def get(exclude: tuple, delC: bool, targets):
             except Exception as ex:
                 traceback.print_exc()
                 continue
+        if delC:
+            delete()
+        if os.path.exists(build_tmp_dir):
+            shutil.rmtree(build_tmp_dir)
         return
 
     for root, dirs, files in os.walk(os.getcwd(), topdown=True):
@@ -44,21 +48,25 @@ def get(exclude: tuple, delC: bool, targets):
                     traceback.print_exc()
                     continue
     if delC:
-        for root, __, files in os.walk(os.getcwd()):
-            for file in files:
-                path = os.path.join(root, file)
-                if file.endswith(".c") and os.stat(path).st_mtime > starttime:
-                    del_list.append(path)
-                elif file.endswith(".so") and os.stat(path).st_mtime > starttime:
-                    del_list.append(path)
-
-    for f in del_list:
-        os.remove(f)
+        delete()
 
     if os.path.exists(build_tmp_dir):
         shutil.rmtree(build_tmp_dir)
 
     print("Complete! Time:", time.time()-starttime, 's')
+
+
+def delete():
+    del_list = []
+    for root, __, files in os.walk(os.getcwd()):
+        for file in files:
+            path = os.path.join(root, file)
+            if file.endswith(".c") and os.stat(path).st_mtime > starttime:
+                del_list.append(path)
+            # elif file.endswith(".so") and os.stat(path).st_mtime > starttime:
+            #     del_list.append(path)
+    for f in del_list:
+        os.remove(f)
 
 
 if __name__ == '__main__':
