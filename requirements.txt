@@ -1,0 +1,6 @@
+click==8.03
+cython==0.29.32
+## Following are to test Cython's compatibility with python packages. ##
+numpy==1.22.1
+pandas==1.40
+scipy==1.90
