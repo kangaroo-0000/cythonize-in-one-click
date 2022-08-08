@@ -1,0 +1,1 @@
+{"buildTargets":["all","docker_build","docker_clean","docker_run","ori_down_run"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

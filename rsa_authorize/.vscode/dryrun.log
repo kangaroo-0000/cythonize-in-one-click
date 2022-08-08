@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/zhengyuchen/Desktop/2021fcu/rsa_authorize'
+docker build -f Dockerfile -t fastimage .
+docker-compose -f dep.yml up -d
+make: Leaving directory `/Users/zhengyuchen/Desktop/2021fcu/rsa_authorize'
+ 

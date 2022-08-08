@@ -1,0 +1,18 @@
+version: '3.6'
+
+services:
+
+  fastcontainer:
+    image: fastimage
+    container_name: fastcontainer
+    restart: unless-stopped
+    # volumes:
+    #   - /etc/localtime:/etc/localtime:ro
+    #   - /etc/timezone:/etc/timezone:ro
+    #   - /testdata/yml:/data/yml
+    #   - /testdata/prometheus:/data/prometheus
+    #   - /testdata/markdown:/data/markdown
+    ports:
+      - 8080:8080
+
+
